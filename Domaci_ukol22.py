@@ -3,8 +3,8 @@ nazev_firmy = input ("Zadej název firmy: ")
 url = "https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat"
 
 headers = {"accept":"application/json", "Content-Type":"application/json"} 
-data_pro_ares = {"obchodniJmeno":nazev_firmy}
-odpoved = requests.post(url, headers=headers, json=data_pro_ares)  
+data_pro_dotaz = {"obchodniJmeno":nazev_firmy}
+odpoved = requests.post(url, headers=headers, json=data_pro_dotazczechi)  
 vysledek = odpoved.json()
 seznam_firem = vysledek.get("ekonomickeSubjekty", [])                            
 print(f"Nalezeno firem: {len(seznam_firem)}")
