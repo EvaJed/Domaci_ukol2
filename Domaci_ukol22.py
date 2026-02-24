@@ -4,12 +4,12 @@ url = "https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyh
 
 headers = {"accept":"application/json", "Content-Type":"application/json"} 
 data_pro_dotaz = {"obchodniJmeno":nazev_firmy}
-odpoved = requests.post(url, headers=headers, json=data_pro_dotazczechi)  
+odpoved = requests.post(url, headers=headers, json=data_pro_dotaz)  
 vysledek = odpoved.json()
 seznam_firem = vysledek.get("ekonomickeSubjekty", [])                            
 print(f"Nalezeno firem: {len(seznam_firem)}")
 
 for firma in seznam_firem:
-    nazev = firma.get("obchodniJmeno") 
-    ico = firma.get("ico")       
-    print(f"{nazev}, IČO:{ico}")                                                                          
+    nazev = firma.get("obchodniJmeno","Název neznámý") 
+    ico = firma.get("ico", "IČO chybí")       
+    print(f"{nazev}, IČO:{ico}")   
